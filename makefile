@@ -8,7 +8,7 @@ flags:=-O$(opt) -fopenmp $(addflag)
 exec?=kmeans
 visscript?=visualize.py
 py?=python3
-results?=res.txt
+results?= $(basename $(file))_res.txt
 runtime?=time.txt
 runtimelines?=5
 tend?=10
@@ -26,6 +26,7 @@ run: $(exec)
 .PHONY: clean
 clean:
 	@-rm $(exec)
+	@-rm baseline
 
 .PHONY: cleanall
 cleanall: clean
@@ -44,7 +45,7 @@ visualize: $(file) $(visscript)
 
 .PHONY: vis
 vis: visualize
-	@open kmeans_clusters_$(k)_clusters.png
+	@open kmeans_clusters_$(k)_clusters.png &
 
 .PHONY: prof
 prof: $(exec)
