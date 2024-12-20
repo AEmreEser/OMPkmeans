@@ -18,6 +18,9 @@ perfopt=LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses,LLC-prefetches,L1-
 
 $(exec): $(exec).cpp
 	g++ $(exec).cpp $(flags) -o $(exec) 
+
+baseline: baseline.cpp
+	g++ baseline.cpp $(flags) $(addflag) -o baseline 
 	
 .PHONY: run
 run: $(exec)
@@ -25,20 +28,20 @@ run: $(exec)
 
 .PHONY: clean
 clean:
-	@-rm $(exec)
-	@-rm baseline
+	-@rm $(exec)
+	-@rm baseline
 
 .PHONY: cleanall
 cleanall: clean
-	@rm kmeans_clusters_*_clusters.png
+	-@rm kmeans_clusters_*_clusters.png
 
 .PHONY: rerun
 rerun: clean run
 
 .PHONY: visualize
 visualize: $(file) $(visscript)
-	@make $(exec) addflag=-DPRINT
-	@./$(exec) $(file) $(k) > $(results)
+	make $(exec) addflag=-DPRINT
+	./$(exec) $(file) $(k) > $(results)
 	$(py) $(visscript) $(results)
 	@head -n $(runtimelines) $(results) > $(runtime)
 	@cat $(runtime)
@@ -52,16 +55,16 @@ prof: $(exec)
 	perf stat -e $(perfopt) ./$(exec) $(file) $(k)
 
 .PHONY: ref
-ref: baseline.cpp
+ref: baseline
 	@echo "Reference run:"
-	@make run exec=baseline
+	./baseline $(file) $(k)
 
 .PHONY: runcmd
 runcmd: $(exec) baseline
 	@echo "=========$(k)=========="
-	@make run k=$(k)
+	make run k=$(k)
 	@echo "=========$(k)=========="
-	@make ref k=$(k)
+	make ref k=$(k)
 
 .PHONY: test
 test: $(exec) baseline
@@ -70,5 +73,5 @@ test: $(exec) baseline
 .PHONY: speedup
 speedup:
 	@echo "Calculating speedup for k=$(k)..."
-	@make run k=$(k) > run_output.txt
-	@make ref k=$(k) > ref_output.txt
+	make run k=$(k) > run_output.txt
+	make ref k=$(k) > ref_output.txt
