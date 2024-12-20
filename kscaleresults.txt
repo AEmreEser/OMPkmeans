@@ -1,0 +1,348 @@
+make[1]: Entering directory '/home/emre/Documents/hw3-cs406'
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14; do k=$((2 ** $i)); make runcmd k=$k; done 
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========1==========
+make run k=1
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 1
+Initialization Time: 0.019297 seconds
+end at iter :1
+Total 1 iterations.
+K-Means Execution Time: 0.009447 seconds
+Sqrt of Sum of Squared Distances (SSD): 184462.131707
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========1==========
+make ref k=1
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 1
+Initialization Time: 0.000906 seconds
+end at iter :1
+Total 1 iterations.
+K-Means Execution Time: 0.000906 seconds
+Sqrt of Sum of Squared Distances (SSD): 184462.131707
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========2==========
+make run k=2
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 2
+Initialization Time: 0.001918 seconds
+end at iter :31
+Total 31 iterations.
+K-Means Execution Time: 0.054049 seconds
+Sqrt of Sum of Squared Distances (SSD): 144408.648405
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========2==========
+make ref k=2
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 2
+Initialization Time: 0.002767 seconds
+end at iter :31
+Total 31 iterations.
+K-Means Execution Time: 0.141268 seconds
+Sqrt of Sum of Squared Distances (SSD): 144408.648405
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========4==========
+make run k=4
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 4
+Initialization Time: 0.002160 seconds
+end at iter :21
+Total 21 iterations.
+K-Means Execution Time: 0.032047 seconds
+Sqrt of Sum of Squared Distances (SSD): 88144.428555
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========4==========
+make ref k=4
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 4
+Initialization Time: 0.005347 seconds
+end at iter :21
+Total 21 iterations.
+K-Means Execution Time: 0.167715 seconds
+Sqrt of Sum of Squared Distances (SSD): 88144.428555
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========8==========
+make run k=8
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 8
+Initialization Time: 0.002684 seconds
+end at iter :116
+Total 116 iterations.
+K-Means Execution Time: 0.213392 seconds
+Sqrt of Sum of Squared Distances (SSD): 63133.474333
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========8==========
+make ref k=8
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 8
+Initialization Time: 0.007143 seconds
+end at iter :116
+Total 116 iterations.
+K-Means Execution Time: 1.106866 seconds
+Sqrt of Sum of Squared Distances (SSD): 63133.474333
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========16==========
+make run k=16
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 16
+Initialization Time: 0.003044 seconds
+end at iter :140
+Total 140 iterations.
+K-Means Execution Time: 0.360485 seconds
+Sqrt of Sum of Squared Distances (SSD): 43967.425871
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========16==========
+make ref k=16
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 16
+Initialization Time: 0.009768 seconds
+end at iter :140
+Total 140 iterations.
+K-Means Execution Time: 1.782890 seconds
+Sqrt of Sum of Squared Distances (SSD): 43967.425871
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========32==========
+make run k=32
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 32
+Initialization Time: 0.004683 seconds
+end at iter :107
+Total 107 iterations.
+K-Means Execution Time: 0.472114 seconds
+Sqrt of Sum of Squared Distances (SSD): 30658.300845
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========32==========
+make ref k=32
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 32
+Initialization Time: 0.015233 seconds
+end at iter :107
+Total 107 iterations.
+K-Means Execution Time: 3.064522 seconds
+Sqrt of Sum of Squared Distances (SSD): 30658.300845
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========64==========
+make run k=64
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 64
+Initialization Time: 0.021559 seconds
+end at iter :183
+Total 183 iterations.
+K-Means Execution Time: 1.445375 seconds
+Sqrt of Sum of Squared Distances (SSD): 21702.823953
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========64==========
+make ref k=64
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 64
+Initialization Time: 0.030391 seconds
+end at iter :183
+Total 183 iterations.
+K-Means Execution Time: 8.400577 seconds
+Sqrt of Sum of Squared Distances (SSD): 21702.823953
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========128==========
+make run k=128
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 128
+Initialization Time: 0.011554 seconds
+end at iter :268
+Total 268 iterations.
+K-Means Execution Time: 5.233459 seconds
+Sqrt of Sum of Squared Distances (SSD): 15259.858735
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========128==========
+make ref k=128
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 128
+Initialization Time: 0.081954 seconds
+end at iter :268
+Total 268 iterations.
+K-Means Execution Time: 18.549233 seconds
+Sqrt of Sum of Squared Distances (SSD): 15259.858735
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========256==========
+make run k=256
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 256
+Initialization Time: 0.028498 seconds
+end at iter :240
+Total 240 iterations.
+K-Means Execution Time: 10.654797 seconds
+Sqrt of Sum of Squared Distances (SSD): 10769.596831
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========256==========
+make ref k=256
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 256
+Initialization Time: 0.189771 seconds
+end at iter :240
+Total 240 iterations.
+K-Means Execution Time: 29.746000 seconds
+Sqrt of Sum of Squared Distances (SSD): 10769.596831
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========512==========
+make run k=512
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 512
+Initialization Time: 0.049982 seconds
+end at iter :184
+Total 184 iterations.
+K-Means Execution Time: 15.825950 seconds
+Sqrt of Sum of Squared Distances (SSD): 7611.198501
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========512==========
+make ref k=512
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 512
+Initialization Time: 0.287447 seconds
+end at iter :184
+Total 184 iterations.
+K-Means Execution Time: 45.790123 seconds
+Sqrt of Sum of Squared Distances (SSD): 7611.198501
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========1024==========
+make run k=1024
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 1024
+Initialization Time: 0.074554 seconds
+end at iter :192
+Total 192 iterations.
+K-Means Execution Time: 32.894567 seconds
+Sqrt of Sum of Squared Distances (SSD): 5363.144110
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========1024==========
+make ref k=1024
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 1024
+Initialization Time: 0.550303 seconds
+end at iter :192
+Total 192 iterations.
+K-Means Execution Time: 88.998427 seconds
+Sqrt of Sum of Squared Distances (SSD): 5363.144110
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========2048==========
+make run k=2048
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 2048
+Initialization Time: 0.144401 seconds
+end at iter :105
+Total 105 iterations.
+K-Means Execution Time: 37.092264 seconds
+Sqrt of Sum of Squared Distances (SSD): 3779.037158
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========2048==========
+make ref k=2048
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 2048
+Initialization Time: 1.069717 seconds
+end at iter :105
+Total 105 iterations.
+K-Means Execution Time: 87.465978 seconds
+Sqrt of Sum of Squared Distances (SSD): 3779.037158
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========4096==========
+make run k=4096
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 4096
+Initialization Time: 0.296241 seconds
+end at iter :68
+Total 68 iterations.
+K-Means Execution Time: 50.989858 seconds
+Sqrt of Sum of Squared Distances (SSD): 2638.005132
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========4096==========
+make ref k=4096
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 4096
+Initialization Time: 1.750607 seconds
+end at iter :68
+Total 68 iterations.
+K-Means Execution Time: 111.417418 seconds
+Sqrt of Sum of Squared Distances (SSD): 2638.005132
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========8192==========
+make run k=8192
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 8192
+Initialization Time: 0.648218 seconds
+end at iter :40
+Total 40 iterations.
+K-Means Execution Time: 69.836304 seconds
+Sqrt of Sum of Squared Distances (SSD): 1834.543716
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========8192==========
+make ref k=8192
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 8192
+Initialization Time: 3.523467 seconds
+end at iter :40
+Total 40 iterations.
+K-Means Execution Time: 137.212657 seconds
+Sqrt of Sum of Squared Distances (SSD): 1834.543716
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
+=========16384==========
+make run k=16384
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+./kmeans input.txt 16384
+Initialization Time: 1.250281 seconds
+end at iter :24
+Total 24 iterations.
+K-Means Execution Time: 125.069592 seconds
+Sqrt of Sum of Squared Distances (SSD): 1261.521049
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+=========16384==========
+make ref k=16384
+make[3]: Entering directory '/home/emre/Documents/hw3-cs406'
+Reference run:
+./baseline input.txt 16384
+Initialization Time: 5.517697 seconds
+end at iter :24
+Total 24 iterations.
+K-Means Execution Time: 143.596118 seconds
+Sqrt of Sum of Squared Distances (SSD): 1261.521049
+make[3]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Leaving directory '/home/emre/Documents/hw3-cs406'
+make[2]: Entering directory '/home/emre/Documents/hw3-cs406'
