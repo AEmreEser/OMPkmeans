@@ -9,6 +9,7 @@ exec?=kmeans
 visscript?=visualize.py
 py?=python3
 results?= $(basename $(file))_res.txt
+testres?=$(basename $(file))_test_res.txt
 runtime?=time.txt
 runtimelines?=5
 tend?=10
@@ -69,7 +70,11 @@ runcmd: $(exec) baseline
 
 .PHONY: test
 test: $(exec) baseline
-	@for i in $(shell seq 1 $(tend)); do k=$$((2 ** $$i)); make runcmd k=$$k; done
+	for i in $(shell seq 0 $(tend)); do k=$$((2 ** $$i)); make runcmd k=$$k; done 
+
+.PHONY: testrec
+testrec: 
+	make test tend=$(tend) file=$(file) > $(testres)
 	
 .PHONY: speedup
 speedup:
