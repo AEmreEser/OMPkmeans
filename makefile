@@ -34,6 +34,7 @@ clean:
 .PHONY: cleanall
 cleanall: clean
 	-@rm kmeans_clusters_*_clusters.png
+	-@rm *_res.txt
 
 .PHONY: rerun
 rerun: clean run
