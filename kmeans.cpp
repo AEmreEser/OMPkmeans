@@ -108,39 +108,22 @@ void init(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
 }
 
 void update(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
-  omp_set_num_threads(k); // max degree of concurrency here
-  double sumxs = new double[k];
-  double sumys = new double[k];
-  int counts = new int[k];
+    double sumx[k] = {0.0}, sumy[k] = {0.0};
+    int count[k] = {0};
+    #pragma omp parallel for reduction(+:sumx[:k],sumy[:k],count[:k])
+    for (int pt = 0; pt < n; pt++){
+        // for small values of k: access locality into sumx, sumy & count is better since the set of values contained within array c (0 to k-1) is smaller, hence all elts will likely fit into the cache. As k grows larger we wait more
+        sumx[c[pt]] += x[pt];
+        sumy[c[pt]] += y[pt];
+        count[c[pt]]++;
+    } // barrier here 
 
-  // THERE IS SMT STUPID GOING ON HERE!!!!
-  #pragma omp parallel for
-  for(int j = 0; j < n; j++) {
-    double locsumx = 0, locsumy = 0;
-    int loccount = 0;
-
-    #pragma omp parallel for reduction(+:locsumx,locsumy,loccount)
-    for(int i = 0; i < k; i++) {
-      if(c[j] == i) {
-        locsumx += x[j];
-        locsumy += y[j];
-        loccount+= 1;
-      }
-    } // for i
-
-    // if(count > 0) {
-    //   cx[i] = sumx / count;
-    //   cy[i] = sumy / count;
-    // }
-  } // for j
-
-  #pragma omp parallel for
-  for(int i = 0; i < k; i++) {
-    if(count > 0) {
-      cx[i] = sumxs[i] / counts[i];
-      cy[i] = sumys[i] / counts[i];
-    } // if 
-  } // for i 
+    omp_set_num_threads(k); // max concurrency here
+    #pragma omp parallel for schedule(static, 1)
+    for (int cl = 0; cl < k; cl++){
+        cx[cl] = sumx[cl] / count[cl];
+        cy[cl] = sumy[cl] / count[cl];
+    }
 }
 
 int readfile(string fname, int *&x, int *&y) {
