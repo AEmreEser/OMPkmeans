@@ -200,7 +200,9 @@ int main(int argc, char *argv[]) {
   }
   printf("Sqrt of Sum of Squared Distances (SSD): %f\n", sqrt(totalSSD));
   
-  //print(x,y,c,cx,cy,k,n);
+  #ifdef PRINT
+  print(x,y,c,cx,cy,k,n);
+  #endif
   
   return 0;
 }
