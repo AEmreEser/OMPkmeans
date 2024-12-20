@@ -11,6 +11,8 @@ py?=python3
 results?=res.txt
 runtime?=time.txt
 runtimelines?=5
+tend?=10
+SHELL := /bin/bash
 
 perfopt=LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses,LLC-prefetches,L1-dcache-load-misses,L1-dcache-loads,L2-loads,L2-load-misses,branches,branch-misses,branch-load-misses
 
@@ -52,6 +54,17 @@ prof: $(exec)
 ref: baseline.cpp
 	@echo "Reference run:"
 	@make run exec=baseline
+
+.PHONY: runcmd
+runcmd: $(exec) baseline
+	@echo "=========$(k)=========="
+	@make run k=$(k)
+	@echo "=========$(k)=========="
+	@make ref k=$(k)
+
+.PHONY: test
+test: $(exec) baseline
+	@for i in $(shell seq 1 $(tend)); do k=$$((2 ** $$i)); make runcmd k=$$k; done
 	
 .PHONY: speedup
 speedup:
