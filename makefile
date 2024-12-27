@@ -42,7 +42,7 @@ rerun: clean run
 
 .PHONY: visualize
 visualize: $(file) $(visscript)
-	make $(exec) addflag=-DPRINT
+	make $(exec) addflag=-DDEBUG
 	./$(exec) $(file) $(k) > $(results)
 	$(py) $(visscript) $(results)
 	@head -n $(runtimelines) $(results) > $(runtime)

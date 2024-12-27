@@ -8,7 +8,13 @@
 #include <omp.h>
 using namespace std;
 
+#ifndef MAX_ITER
 #define MAX_ITER 500
+#endif
+
+#ifndef OUTFILE
+#define OUTFILE "out_omp.txt"
+#endif
 
 double inline dist(double x1, double y1, double x2, double y2) {
   return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);  // sqrt is omitted as it reduces performance.
@@ -176,6 +182,19 @@ void print(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
   }
 }
 
+void writeClusterAssignments(const int* x, const int* y, const int* c, int n, const string& filename) {
+    ofstream outFile(filename);
+    if (!outFile) {
+        throw runtime_error("Could not open file: " + filename);
+    }
+    
+    for (int i = 0; i < n; i++) {
+        outFile << x[i] << " " << y[i] << " " << c[i] << "\n";
+    }
+    
+    outFile.close();
+}
+
 void kmeans(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
   bool end = false; 
   int iter = 0;
@@ -184,7 +203,8 @@ void kmeans(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
     end = assign(x,y,c,cx,cy,k,n);  // Reassign points to clusters
     iter++;
     if(end) {
-      printf("end at iter :%d\n",iter);
+        printf("End at iter :%d\n",iter);
+        writeClusterAssignments(x, y, c, n, OUTFILE);
     }
   }
   printf("Total %d iterations.\n",iter);
@@ -235,7 +255,7 @@ int main(int argc, char *argv[]) {
   printf("Sqrt of Sum of Squared Distances (SSD): %f\n", sqrt(totalSSD));
   
   // Uncomment to print results
-  #ifdef PRINT
+  #ifdef DEBUG
   print(x,y,c,cx,cy,k,n);
   #endif
 
