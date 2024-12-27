@@ -16,6 +16,10 @@ using namespace std;
 #define OUTFILE "out_omp.txt"
 #endif
 
+#ifndef THREADNUM
+#define THREADNUM omp_get_max_threads()
+#endif
+
 double inline dist(double x1, double y1, double x2, double y2) {
   return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);  // sqrt is omitted as it reduces performance.
 }
@@ -56,7 +60,7 @@ bool assign(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
   bool end = true;
   int * changed = new int[n]();
 
-  omp_set_num_threads(omp_get_max_threads());
+  omp_set_num_threads(THREADNUM);
   #pragma omp parallel for // reduction(&:end) // Parallelize the assignment step
   for(int i = 0; i < n; i++) {
     int cluster;
@@ -126,7 +130,7 @@ void update(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
         count[i] = 0;
     }
 
-    omp_set_num_threads(omp_get_max_threads());
+    omp_set_num_threads(THREADNUM);
     #pragma omp parallel for reduction(+:sumx[:k],sumy[:k],count[:k])
     for (int pt = 0; pt < n; pt++){
         // for small values of k: access locality into sumx, sumy & count is better since the set of values contained within array c (0 to k-1) is smaller, hence all elts will likely fit into the cache. As k grows larger we wait more
@@ -135,7 +139,7 @@ void update(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
         count[c[pt]]++;
     } // barrier here 
 
-    omp_set_num_threads(k); // max concurrency here
+    omp_set_num_threads(( k < THREADNUM ) ? (k) : (THREADNUM)); // max concurrency here is k
     #pragma omp parallel for schedule(static, 1)
     for (int cl = 0; cl < k; cl++){
         cx[cl] = sumx[cl] / count[cl];
@@ -200,6 +204,13 @@ void kmeans(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
   int iter = 0;
   while(!end && iter != MAX_ITER) {
     update(x,y,c,cx,cy,k,n);  // Update the centers
+    #ifdef DEBUG
+        printf("=============================\n");
+        for(int i = 0; i < k; i++) {
+            printf("**Cluster %d **",i);
+            printf("**Center :(%f,%f)\n",cx[i],cy[i]);
+        }
+    #endif
     end = assign(x,y,c,cx,cy,k,n);  // Reassign points to clusters
     iter++;
     if(end) {
