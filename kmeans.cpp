@@ -8,8 +8,8 @@
 #include <omp.h>
 using namespace std;
 
-#ifndef MAX_ITER
-#define MAX_ITER 500
+#ifndef MAXITER
+#define MAXITER 500
 #endif
 
 #ifndef OUTFILE
@@ -202,7 +202,7 @@ void writeClusterAssignments(const int* x, const int* y, const int* c, int n, co
 void kmeans(int *&x, int *&y, int *&c, double *&cx, double *&cy, int k, int n) {
   bool end = false; 
   int iter = 0;
-  while(!end && iter != MAX_ITER) {
+  while(!end && iter != MAXITER) {
     update(x,y,c,cx,cy,k,n);  // Update the centers
     #ifdef DEBUG
         printf("=============================\n");
